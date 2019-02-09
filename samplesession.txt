@@ -1,0 +1,52 @@
+~ ❯ git clone https://github.com/MatrixManAtYrService/challenge_prep
+
+~ ❯ cd challenge_prep/site
+
+~/challenge_prep/site ❯ python -m SimpleHTTPServer 8080 & sleep 1
+
+    [1] 19840
+    Serving HTTP on 0.0.0.0 port 8080 ...
+
+~/challenge_prep/site ❯ SERVER_PID=$!
+
+~/challenge_prep/site ❯ cd ..
+
+~/challenge_prep ❯ sudo ./challenge_setup.sh
+
+~/challenge_prep ❯ ./view_stuff.sh
+
+~/challenge_prep ❯ ./do_thing.sh
+
+    [2019-02-09 14:03:18] not installed
+
+    site access test:
+    + curl localhost:8080/foo/bar/
+    127.0.0.1 - - [09/Feb/2019 14:03:18] "GET /foo/bar/ HTTP/1.1" 200 -
+    qux
+    + set +x
+
+~/challenge_prep ❯ sudo install_package.py
+
+~/challenge_prep ❯ ./do_thing.sh
+
+    [2019-02-09 14:03:33] package installed
+
+    site access test:
+    + curl localhost:8080/foo/bar/
+    127.0.0.1 - - [09/Feb/2019 14:03:33] "GET /foo/bar/ HTTP/1.1" 200 -
+    qux
+    + set +x
+
+~/challenge_prep ❯ ./view_stuff.sh
+
+    [2019-02-09 14:03:18] not installed
+    [2019-02-09 14:03:33] package installed
+
+~/challenge_prep ❯ sudo ./challenge_setup.sh
+
+~/challenge_prep ❯ ./view_stuff.sh
+
+~/challenge_prep ❯ kill -9 $SERVER_PID
+
+    [1]  + killed     python2 -m SimpleHTTPServer 8080
+
